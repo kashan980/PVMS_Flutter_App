@@ -1,0 +1,27 @@
+# Store text files with LF line endings in the repository and use the
+# platform's native endings in the working folder. Without this, the same
+# file edited on two Windows laptops can show every line as changed.
+* text=auto
+
+# Windows batch scripts must keep CRLF or cmd.exe can misread them.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Shell scripts must keep LF.
+*.sh text eol=lf
+
+# Binary files: never convert or diff.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.pdf binary
+*.jar binary
+*.so binary
+*.apk binary
+*.aab binary
+*.joblib binary
+*.pkl binary
+*.npy binary
