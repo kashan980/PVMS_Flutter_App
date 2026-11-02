@@ -1,0 +1,55 @@
+name: WBS task
+description: A planned piece of work from the project WBS, owned by one team member
+title: "[Task] "
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        One task, one owner. Assign the owner under **Assignees** after creating the issue,
+        and reference it in commits and pull requests (for example `Closes #12`).
+  - type: dropdown
+    id: wbs
+    attributes:
+      label: WBS area
+      options:
+        - "1 Reports and documentation"
+        - "2 Presentation layer (Flutter UI)"
+        - "3 Business logic (FastAPI, preprocessing, ML)"
+        - "4 Data management, local (sqflite)"
+        - "5 Data management, cloud (API routes, latency)"
+        - "6 Physical layer (ELM327, Bluetooth, road testing)"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What needs to be done
+      description: The deliverable, in plain words.
+    validations:
+      required: true
+  - type: textarea
+    id: done_when
+    attributes:
+      label: Done when
+      description: Conditions that can be checked, including which tests must pass.
+      placeholder: |
+        - [ ] flutter analyze reports no issues
+        - [ ] flutter test passes
+    validations:
+      required: true
+  - type: input
+    id: rules
+    attributes:
+      label: PVMS design rules involved
+      placeholder: "For example: Rule 9 (offline first)"
+  - type: input
+    id: branch
+    attributes:
+      label: Branch
+      placeholder: "feature/<name>-<module>"
+  - type: input
+    id: depends
+    attributes:
+      label: Depends on
+      placeholder: "For example: #12"

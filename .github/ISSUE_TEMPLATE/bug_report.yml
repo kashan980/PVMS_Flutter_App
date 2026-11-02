@@ -1,0 +1,63 @@
+name: Bug report
+description: Something in the app or the backend does not work as expected
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Flutter app (screens, UI)
+        - Monitoring and offline sync
+        - Local database (sqflite)
+        - OBD-II scanner and Bluetooth
+        - Simulator
+        - Backend API
+        - ML model and rules
+        - Time-To-Failure forecast
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Data source
+      options:
+        - Simulator
+        - OBD-II scanner (real car)
+        - Not applicable
+    validations:
+      required: true
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or error output
+      description: Server console output, flutter run output or a screenshot.
+      render: shell
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: "Branch or commit, phone model, Android version, scanner model"
