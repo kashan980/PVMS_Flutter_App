@@ -1,0 +1,52 @@
+name: Backend
+
+on:
+  pull_request:
+    branches: [develop, main]
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backend-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: import check + pytest
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.14
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Install packages
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Compile every module (syntax errors)
+        run: python -m compileall -q main.py train_model.py export_sim_trace.py pvms tests
+
+      - name: Import the API and the training script (missing modules or packages)
+        run: python -c "import main, train_model; print('imports OK')"
+
+      # The dataset (about 187 MB) and the trained model are not in the repository,
+      # so tests that need the model are skipped here and listed with their reason (-rs).
+      # The reviewer runs the full suite locally before merging.
+      - name: Run tests
+        run: python -m pytest -q -rs
