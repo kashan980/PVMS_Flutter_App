@@ -4,12 +4,7 @@ on:
   pull_request:
     branches: [develop, main]
     paths:
-      - "lib/**"
-      - "test/**"
-      - "assets/**"
-      - "pubspec.yaml"
-      - "pubspec.lock"
-      - "analysis_options.yaml"
+      - "app/**"
       - ".github/workflows/flutter.yml"
   workflow_dispatch:
 
@@ -25,6 +20,9 @@ jobs:
     name: flutter analyze + flutter test
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: app
     steps:
       - name: Check out the code
         uses: actions/checkout@v4
