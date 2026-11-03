@@ -20,6 +20,8 @@ Which model judges a window?
 """
 from __future__ import annotations
 
+import csv
+import datetime as dt
 import os
 import re
 import sys
@@ -44,6 +46,7 @@ MODEL_PATH = os.path.join(HERE, "saved_models", "pvms_model.joblib")
 VEHICLE_DIR = os.path.join(HERE, "saved_models", "vehicles")
 MIN_CALIBRATION_WINDOWS = 40       # manual /calibrate: ≈ 12 min of warm-engine driving
 AUTO_CALIBRATION_WINDOWS = 60      # automatic learning: ≈ 18 min of warm-engine driving
+RECORDINGS_DIR = os.path.join(HERE, "recordings")   # raw real-car data for the report / future training
 
 app = FastAPI(title="PVMS Predictive Engine API", version=MODEL_VERSION)
 
@@ -80,6 +83,7 @@ class PredictRequest(BaseModel):
     use_base_model: bool = Field(True, description="True only for the Opel dataset / simulator. A real car "
                                                     "should send false so it is never judged by the Opel's normal.")
     auto_learn: bool = Field(True, description="Learn this vehicle's profile automatically while driving")
+    record: bool = Field(True, description="Save raw readings of real cars to backend/recordings/")
     trip_elapsed_s: Optional[float] = Field(None, description="Seconds since engine start (thermostat check)")
     recent_model_flags: Optional[list[bool]] = Field(None, description="model_anomaly of previous windows this trip")
     client_sent_ms: Optional[int] = Field(None, description="Phone clock when the request was sent (latency)")
@@ -163,6 +167,28 @@ def _learn(vid: str, feats: dict) -> tuple[int, bool]:
     return len(F), False
 
 
+RECORD_FIELDS = ["timestamp_ms"] + ALL_SIGNALS
+
+
+def _record(vid: str, samples: list[Sample]) -> None:
+    """Append raw readings to recordings/<vehicle>/<date>.csv.
+
+    Windows overlap by 50 % and offline windows arrive late, so rows can repeat or be out of
+    order: de-duplicate and sort by timestamp_ms when loading (pvms.dataset.load_recordings).
+    """
+    day = dt.datetime.fromtimestamp(samples[0].timestamp_ms / 1000).strftime("%Y-%m-%d")
+    folder = os.path.join(RECORDINGS_DIR, vid)
+    os.makedirs(folder, exist_ok=True)
+    path = os.path.join(folder, f"{day}.csv")
+    new = not os.path.exists(path)
+    with open(path, "a", newline="") as fh:
+        w = csv.writer(fh)
+        if new:
+            w.writerow(RECORD_FIELDS)
+        for s in samples:
+            w.writerow([getattr(s, f) if getattr(s, f) is not None else "" for f in RECORD_FIELDS])
+
+
 def _to_arrays(samples: list[Sample]):
     samples = sorted(samples, key=lambda s: s.timestamp_ms)
     t = np.array([s.timestamp_ms for s in samples], dtype=float) / 1000.0
@@ -218,6 +244,11 @@ def predict(req: PredictRequest):
 
     w, t = _to_arrays(req.samples)
     res = analyse_window(bundle, w, t, req.trip_elapsed_s, req.recent_model_flags)
+    if req.record and vid and not req.use_base_model:        # real cars only, never the Opel replay
+        try:
+            _record(vid, req.samples)
+        except OSError as e:  # recording must never break predictions
+            print(f"[PVMS] could not record: {e}")
 
     learning = None
     if mode == "learning":
