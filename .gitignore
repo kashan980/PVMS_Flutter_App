@@ -1,6 +1,6 @@
 # =====================================================================
 # PVMS - Predictive Vehicle Maintenance System
-# Flutter app (repo root) + FastAPI / Python backend (backend/)
+# Flutter app (app/) + FastAPI / Python backend (backend/)
 # =====================================================================
 
 # ---------- Secrets and machine-specific settings --------------------
@@ -21,8 +21,8 @@ local.properties
 .packages
 .pub-cache/
 .pub/
-/build/
-/coverage/
+build/
+coverage/
 **/doc/api/
 **/ios/Flutter/.last_build_id
 app.*.symbols
@@ -31,9 +31,9 @@ migrate_working_dir/
 *.class
 
 # Android Studio build artifacts
-/android/app/debug
-/android/app/profile
-/android/app/release
+app/android/app/debug
+app/android/app/profile
+app/android/app/release
 
 # Release builds are attached to GitHub Releases, never committed
 *.apk
@@ -94,3 +94,6 @@ $RECYCLE.BIN/
 
 # ---------- Local project-context notes (not part of the public repo)
 docs/claude_project/
+
+# ---------- Desktop app downloads folder (keep its files out of the repo)
+Claude outputs/

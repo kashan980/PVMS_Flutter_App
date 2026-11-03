@@ -1,0 +1,484 @@
+{
+  "model_version": "2.0.0",
+  "dataset_rows": 789373,
+  "windows": 51873,
+  "split": {
+    "train": 28637,
+    "val": 5856,
+    "test": 8863
+  },
+  "clean_test": {
+    "windows": 8863,
+    "rules_false_alarm_rate": 0.0193,
+    "model_false_alarm_rate_raw": 0.0338,
+    "model_false_alarm_rate": 0.0139,
+    "hybrid_false_alarm_rate": 0.0326
+  },
+  "fault_injection": [
+    {
+      "fault": "overheating",
+      "severity": "mild",
+      "events": 300,
+      "window_recall_model": 0.206,
+      "recall_rules": 0.3,
+      "recall_model": 0.17,
+      "recall_hybrid": 0.343
+    },
+    {
+      "fault": "overheating",
+      "severity": "severe",
+      "events": 300,
+      "window_recall_model": 0.976,
+      "recall_rules": 0.98,
+      "recall_model": 0.977,
+      "recall_hybrid": 0.983
+    },
+    {
+      "fault": "vacuum_leak",
+      "severity": "mild",
+      "events": 300,
+      "window_recall_model": 0.386,
+      "recall_rules": 0.663,
+      "recall_model": 0.377,
+      "recall_hybrid": 0.78
+    },
+    {
+      "fault": "vacuum_leak",
+      "severity": "severe",
+      "events": 300,
+      "window_recall_model": 0.986,
+      "recall_rules": 0.807,
+      "recall_model": 0.993,
+      "recall_hybrid": 0.993
+    },
+    {
+      "fault": "injector_leak",
+      "severity": "mild",
+      "events": 300,
+      "window_recall_model": 0.71,
+      "recall_rules": 0.0,
+      "recall_model": 0.727,
+      "recall_hybrid": 0.727
+    },
+    {
+      "fault": "injector_leak",
+      "severity": "severe",
+      "events": 300,
+      "window_recall_model": 1.0,
+      "recall_rules": 0.447,
+      "recall_model": 1.0,
+      "recall_hybrid": 1.0
+    },
+    {
+      "fault": "alternator_failure",
+      "severity": "mild",
+      "events": 300,
+      "window_recall_model": 0.439,
+      "recall_rules": 0.067,
+      "recall_model": 0.427,
+      "recall_hybrid": 0.44
+    },
+    {
+      "fault": "alternator_failure",
+      "severity": "severe",
+      "events": 300,
+      "window_recall_model": 1.0,
+      "recall_rules": 1.0,
+      "recall_model": 1.0,
+      "recall_hybrid": 1.0
+    },
+    {
+      "fault": "o2_sensor_degraded",
+      "severity": "mild",
+      "events": 300,
+      "window_recall_model": 0.051,
+      "recall_rules": 0.453,
+      "recall_model": 0.037,
+      "recall_hybrid": 0.487
+    },
+    {
+      "fault": "o2_sensor_degraded",
+      "severity": "severe",
+      "events": 300,
+      "window_recall_model": 1.0,
+      "recall_rules": 0.81,
+      "recall_model": 1.0,
+      "recall_hybrid": 1.0
+    }
+  ],
+  "overall": {
+    "rules_only": {
+      "precision": 0.915,
+      "recall": 0.5527,
+      "f1": 0.6891,
+      "tp": 1658,
+      "fp": 154,
+      "fn": 1342,
+      "tn": 2728
+    },
+    "model_only": {
+      "precision": 0.9622,
+      "recall": 0.6707,
+      "f1": 0.7904,
+      "tp": 2012,
+      "fp": 79,
+      "fn": 988,
+      "tn": 2803
+    },
+    "hybrid": {
+      "precision": 0.9118,
+      "recall": 0.7753,
+      "f1": 0.838,
+      "tp": 2326,
+      "fp": 225,
+      "fn": 674,
+      "tn": 2657
+    },
+    "negative_events": 2882
+  },
+  "overall_window": {
+    "rules_only": {
+      "precision": 0.9602,
+      "recall": 0.4589,
+      "f1": 0.621,
+      "tp": 4130,
+      "fp": 171,
+      "fn": 4870,
+      "tn": 8692
+    },
+    "model_only": {
+      "precision": 0.953,
+      "recall": 0.6752,
+      "f1": 0.7904,
+      "tp": 6077,
+      "fp": 300,
+      "fn": 2923,
+      "tn": 8563
+    },
+    "hybrid": {
+      "precision": 0.936,
+      "recall": 0.7333,
+      "f1": 0.8224,
+      "tp": 6600,
+      "fp": 451,
+      "fn": 2400,
+      "tn": 8412
+    }
+  },
+  "ltft_forecast": {
+    "indicator": "ltft_mean",
+    "label": "Fuel trim (lean condition)",
+    "threshold": 25.0,
+    "direction": "up",
+    "points": 22,
+    "km_remaining": 37023,
+    "slope_per_1000km": 0.2423,
+    "r2": 0.562,
+    "current": 16.03,
+    "status": "degrading"
+  },
+  "new_car": [
+    {
+      "car": "trims -14 %, 13.6 V (e.g. Japanese car with smart charging)",
+      "rules_false_alarm": 0.0042,
+      "opel_model_false_alarm": 0.9742,
+      "adapted_false_alarm": 0.0308,
+      "adapted_recall": {
+        "overheating/mild": 0.167,
+        "overheating/severe": 0.947,
+        "vacuum_leak/mild": 0.347,
+        "vacuum_leak/severe": 0.98,
+        "injector_leak/mild": 0.733,
+        "injector_leak/severe": 1.0,
+        "alternator_failure/mild": 0.087,
+        "alternator_failure/severe": 1.0,
+        "o2_sensor_degraded/mild": 0.02,
+        "o2_sensor_degraded/severe": 1.0
+      }
+    },
+    {
+      "car": "trims -20 %, 14.4 V",
+      "rules_false_alarm": 0.0017,
+      "opel_model_false_alarm": 1.0,
+      "adapted_false_alarm": 0.0308,
+      "adapted_recall": {
+        "overheating/mild": 0.167,
+        "overheating/severe": 0.947,
+        "vacuum_leak/mild": 0.347,
+        "vacuum_leak/severe": 0.98,
+        "injector_leak/mild": 0.733,
+        "injector_leak/severe": 1.0,
+        "alternator_failure/mild": 0.973,
+        "alternator_failure/severe": 1.0,
+        "o2_sensor_degraded/mild": 0.02,
+        "o2_sensor_degraded/severe": 1.0
+      }
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": 1,
+      "ltft_mean": 11.6667,
+      "volt_mean": 14.0533,
+      "coolant_mean": 96.0,
+      "windows": 1859,
+      "km_end": 604.0602,
+      "model_anomaly_rate": 0.0446,
+      "lean_low_speed_rate": 0.135,
+      "health_mean": 90.6835,
+      "km": 604.0602
+    },
+    {
+      "segment_id": 2,
+      "ltft_mean": 14.1536,
+      "volt_mean": 14.1,
+      "coolant_mean": 96.1333,
+      "windows": 2080,
+      "km_end": 1274.1594,
+      "model_anomaly_rate": 0.024,
+      "lean_low_speed_rate": 0.1428,
+      "health_mean": 92.3912,
+      "km": 670.0992
+    },
+    {
+      "segment_id": 3,
+      "ltft_mean": 14.2188,
+      "volt_mean": 14.0,
+      "coolant_mean": 96.0,
+      "windows": 2394,
+      "km_end": 1964.349,
+      "model_anomaly_rate": 0.0388,
+      "lean_low_speed_rate": 0.185,
+      "health_mean": 90.3863,
+      "km": 690.1897
+    },
+    {
+      "segment_id": 4,
+      "ltft_mean": 13.2292,
+      "volt_mean": 14.0,
+      "coolant_mean": 96.0,
+      "windows": 2300,
+      "km_end": 2646.7067,
+      "model_anomaly_rate": 0.0209,
+      "lean_low_speed_rate": 0.127,
+      "health_mean": 91.5829,
+      "km": 682.3576
+    },
+    {
+      "segment_id": 5,
+      "ltft_mean": 12.6302,
+      "volt_mean": 14.0467,
+      "coolant_mean": 96.0,
+      "windows": 1273,
+      "km_end": 3059.9517,
+      "model_anomaly_rate": 0.022,
+      "lean_low_speed_rate": 0.1383,
+      "health_mean": 91.963,
+      "km": 413.245
+    },
+    {
+      "segment_id": 6,
+      "ltft_mean": 12.3438,
+      "volt_mean": 14.1,
+      "coolant_mean": 97.0,
+      "windows": 1969,
+      "km_end": 3723.4693,
+      "model_anomaly_rate": 0.0208,
+      "lean_low_speed_rate": 0.1412,
+      "health_mean": 93.3204,
+      "km": 663.5176
+    },
+    {
+      "segment_id": 7,
+      "ltft_mean": 13.9844,
+      "volt_mean": 14.1,
+      "coolant_mean": 96.9667,
+      "windows": 2203,
+      "km_end": 4426.1717,
+      "model_anomaly_rate": 0.0163,
+      "lean_low_speed_rate": 0.1507,
+      "health_mean": 91.9281,
+      "km": 702.7024
+    },
+    {
+      "segment_id": 8,
+      "ltft_mean": 14.362,
+      "volt_mean": 14.1033,
+      "coolant_mean": 97.0,
+      "windows": 2074,
+      "km_end": 5122.6801,
+      "model_anomaly_rate": 0.0101,
+      "lean_low_speed_rate": 0.1215,
+      "health_mean": 93.2953,
+      "km": 696.5084
+    },
+    {
+      "segment_id": 9,
+      "ltft_mean": 13.6198,
+      "volt_mean": 14.1467,
+      "coolant_mean": 97.0,
+      "windows": 1825,
+      "km_end": 5745.0919,
+      "model_anomaly_rate": 0.0099,
+      "lean_low_speed_rate": 0.1282,
+      "health_mean": 93.7246,
+      "km": 622.4118
+    },
+    {
+      "segment_id": 10,
+      "ltft_mean": 14.375,
+      "volt_mean": 14.1967,
+      "coolant_mean": 97.0667,
+      "windows": 1895,
+      "km_end": 6390.6881,
+      "model_anomaly_rate": 0.0063,
+      "lean_low_speed_rate": 0.1235,
+      "health_mean": 94.1975,
+      "km": 645.5962
+    },
+    {
+      "segment_id": 11,
+      "ltft_mean": 13.3594,
+      "volt_mean": 14.2,
+      "coolant_mean": 97.0,
+      "windows": 1772,
+      "km_end": 7060.4064,
+      "model_anomaly_rate": 0.0062,
+      "lean_low_speed_rate": 0.1072,
+      "health_mean": 94.416,
+      "km": 669.7183
+    },
+    {
+      "segment_id": 12,
+      "ltft_mean": 14.4792,
+      "volt_mean": 14.1533,
+      "coolant_mean": 97.0,
+      "windows": 1740,
+      "km_end": 7672.0008,
+      "model_anomaly_rate": 0.0167,
+      "lean_low_speed_rate": 0.1638,
+      "health_mean": 93.2603,
+      "km": 611.5944
+    },
+    {
+      "segment_id": 13,
+      "ltft_mean": 13.9844,
+      "volt_mean": 14.2,
+      "coolant_mean": 97.0333,
+      "windows": 1585,
+      "km_end": 8265.2289,
+      "model_anomaly_rate": 0.0095,
+      "lean_low_speed_rate": 0.1211,
+      "health_mean": 94.694,
+      "km": 593.2281
+    },
+    {
+      "segment_id": 14,
+      "ltft_mean": 15.651,
+      "volt_mean": 14.2533,
+      "coolant_mean": 97.0,
+      "windows": 1751,
+      "km_end": 8872.5018,
+      "model_anomaly_rate": 0.0063,
+      "lean_low_speed_rate": 0.1548,
+      "health_mean": 94.7047,
+      "km": 607.2729
+    },
+    {
+      "segment_id": 15,
+      "ltft_mean": 15.7812,
+      "volt_mean": 14.2,
+      "coolant_mean": 96.9667,
+      "windows": 1917,
+      "km_end": 9521.629,
+      "model_anomaly_rate": 0.0089,
+      "lean_low_speed_rate": 0.1544,
+      "health_mean": 94.158,
+      "km": 649.1273
+    },
+    {
+      "segment_id": 16,
+      "ltft_mean": 15.3385,
+      "volt_mean": 14.2,
+      "coolant_mean": 96.4667,
+      "windows": 2055,
+      "km_end": 10206.4618,
+      "model_anomaly_rate": 0.0161,
+      "lean_low_speed_rate": 0.145,
+      "health_mean": 92.4891,
+      "km": 684.8327
+    },
+    {
+      "segment_id": 17,
+      "ltft_mean": 14.5312,
+      "volt_mean": 14.2,
+      "coolant_mean": 96.4667,
+      "windows": 1870,
+      "km_end": 10845.9746,
+      "model_anomaly_rate": 0.0176,
+      "lean_low_speed_rate": 0.1428,
+      "health_mean": 93.252,
+      "km": 639.5129
+    },
+    {
+      "segment_id": 18,
+      "ltft_mean": 15.4167,
+      "volt_mean": 14.2,
+      "coolant_mean": 96.0,
+      "windows": 1931,
+      "km_end": 11501.0612,
+      "model_anomaly_rate": 0.0129,
+      "lean_low_speed_rate": 0.144,
+      "health_mean": 93.2542,
+      "km": 655.0865
+    },
+    {
+      "segment_id": 19,
+      "ltft_mean": 14.5573,
+      "volt_mean": 14.1967,
+      "coolant_mean": 95.9667,
+      "windows": 1997,
+      "km_end": 12174.8334,
+      "model_anomaly_rate": 0.024,
+      "lean_low_speed_rate": 0.1287,
+      "health_mean": 92.3973,
+      "km": 673.7722
+    },
+    {
+      "segment_id": 20,
+      "ltft_mean": 17.7344,
+      "volt_mean": 14.1033,
+      "coolant_mean": 95.9333,
+      "windows": 2343,
+      "km_end": 12809.6767,
+      "model_anomaly_rate": 0.0593,
+      "lean_low_speed_rate": 0.2565,
+      "health_mean": 88.4937,
+      "km": 634.8433
+    },
+    {
+      "segment_id": 21,
+      "ltft_mean": 14.5573,
+      "volt_mean": 14.0867,
+      "coolant_mean": 95.5333,
+      "windows": 2311,
+      "km_end": 13540.9951,
+      "model_anomaly_rate": 0.026,
+      "lean_low_speed_rate": 0.1277,
+      "health_mean": 91.4589,
+      "km": 731.3184
+    },
+    {
+      "segment_id": 22,
+      "ltft_mean": 16.224,
+      "volt_mean": 14.1,
+      "coolant_mean": 95.9667,
+      "windows": 2212,
+      "km_end": 14185.409,
+      "model_anomaly_rate": 0.024,
+      "lean_low_speed_rate": 0.1958,
+      "health_mean": 91.6524,
+      "km": 644.4139
+    }
+  ]
+}
