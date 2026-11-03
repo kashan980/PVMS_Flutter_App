@@ -1,0 +1,222 @@
+[
+ {
+  "segment_id": 1,
+  "km": 604.06,
+  "km_end": 604.06,
+  "health_mean": 90.684,
+  "ltft_mean": 11.667,
+  "volt_mean": 14.053,
+  "coolant_mean": 96.0,
+  "windows": 1859
+ },
+ {
+  "segment_id": 2,
+  "km": 670.099,
+  "km_end": 1274.159,
+  "health_mean": 92.391,
+  "ltft_mean": 14.154,
+  "volt_mean": 14.1,
+  "coolant_mean": 96.133,
+  "windows": 2080
+ },
+ {
+  "segment_id": 3,
+  "km": 690.19,
+  "km_end": 1964.349,
+  "health_mean": 90.386,
+  "ltft_mean": 14.219,
+  "volt_mean": 14.0,
+  "coolant_mean": 96.0,
+  "windows": 2394
+ },
+ {
+  "segment_id": 4,
+  "km": 682.358,
+  "km_end": 2646.707,
+  "health_mean": 91.583,
+  "ltft_mean": 13.229,
+  "volt_mean": 14.0,
+  "coolant_mean": 96.0,
+  "windows": 2300
+ },
+ {
+  "segment_id": 5,
+  "km": 413.245,
+  "km_end": 3059.952,
+  "health_mean": 91.963,
+  "ltft_mean": 12.63,
+  "volt_mean": 14.047,
+  "coolant_mean": 96.0,
+  "windows": 1273
+ },
+ {
+  "segment_id": 6,
+  "km": 663.518,
+  "km_end": 3723.469,
+  "health_mean": 93.32,
+  "ltft_mean": 12.344,
+  "volt_mean": 14.1,
+  "coolant_mean": 97.0,
+  "windows": 1969
+ },
+ {
+  "segment_id": 7,
+  "km": 702.702,
+  "km_end": 4426.172,
+  "health_mean": 91.928,
+  "ltft_mean": 13.984,
+  "volt_mean": 14.1,
+  "coolant_mean": 96.967,
+  "windows": 2203
+ },
+ {
+  "segment_id": 8,
+  "km": 696.508,
+  "km_end": 5122.68,
+  "health_mean": 93.295,
+  "ltft_mean": 14.362,
+  "volt_mean": 14.103,
+  "coolant_mean": 97.0,
+  "windows": 2074
+ },
+ {
+  "segment_id": 9,
+  "km": 622.412,
+  "km_end": 5745.092,
+  "health_mean": 93.725,
+  "ltft_mean": 13.62,
+  "volt_mean": 14.147,
+  "coolant_mean": 97.0,
+  "windows": 1825
+ },
+ {
+  "segment_id": 10,
+  "km": 645.596,
+  "km_end": 6390.688,
+  "health_mean": 94.198,
+  "ltft_mean": 14.375,
+  "volt_mean": 14.197,
+  "coolant_mean": 97.067,
+  "windows": 1895
+ },
+ {
+  "segment_id": 11,
+  "km": 669.718,
+  "km_end": 7060.406,
+  "health_mean": 94.416,
+  "ltft_mean": 13.359,
+  "volt_mean": 14.2,
+  "coolant_mean": 97.0,
+  "windows": 1772
+ },
+ {
+  "segment_id": 12,
+  "km": 611.594,
+  "km_end": 7672.001,
+  "health_mean": 93.26,
+  "ltft_mean": 14.479,
+  "volt_mean": 14.153,
+  "coolant_mean": 97.0,
+  "windows": 1740
+ },
+ {
+  "segment_id": 13,
+  "km": 593.228,
+  "km_end": 8265.229,
+  "health_mean": 94.694,
+  "ltft_mean": 13.984,
+  "volt_mean": 14.2,
+  "coolant_mean": 97.033,
+  "windows": 1585
+ },
+ {
+  "segment_id": 14,
+  "km": 607.273,
+  "km_end": 8872.502,
+  "health_mean": 94.705,
+  "ltft_mean": 15.651,
+  "volt_mean": 14.253,
+  "coolant_mean": 97.0,
+  "windows": 1751
+ },
+ {
+  "segment_id": 15,
+  "km": 649.127,
+  "km_end": 9521.629,
+  "health_mean": 94.158,
+  "ltft_mean": 15.781,
+  "volt_mean": 14.2,
+  "coolant_mean": 96.967,
+  "windows": 1917
+ },
+ {
+  "segment_id": 16,
+  "km": 684.833,
+  "km_end": 10206.462,
+  "health_mean": 92.489,
+  "ltft_mean": 15.339,
+  "volt_mean": 14.2,
+  "coolant_mean": 96.467,
+  "windows": 2055
+ },
+ {
+  "segment_id": 17,
+  "km": 639.513,
+  "km_end": 10845.975,
+  "health_mean": 93.252,
+  "ltft_mean": 14.531,
+  "volt_mean": 14.2,
+  "coolant_mean": 96.467,
+  "windows": 1870
+ },
+ {
+  "segment_id": 18,
+  "km": 655.087,
+  "km_end": 11501.061,
+  "health_mean": 93.254,
+  "ltft_mean": 15.417,
+  "volt_mean": 14.2,
+  "coolant_mean": 96.0,
+  "windows": 1931
+ },
+ {
+  "segment_id": 19,
+  "km": 673.772,
+  "km_end": 12174.833,
+  "health_mean": 92.397,
+  "ltft_mean": 14.557,
+  "volt_mean": 14.197,
+  "coolant_mean": 95.967,
+  "windows": 1997
+ },
+ {
+  "segment_id": 20,
+  "km": 634.843,
+  "km_end": 12809.677,
+  "health_mean": 88.494,
+  "ltft_mean": 17.734,
+  "volt_mean": 14.103,
+  "coolant_mean": 95.933,
+  "windows": 2343
+ },
+ {
+  "segment_id": 21,
+  "km": 731.318,
+  "km_end": 13540.995,
+  "health_mean": 91.459,
+  "ltft_mean": 14.557,
+  "volt_mean": 14.087,
+  "coolant_mean": 95.533,
+  "windows": 2311
+ },
+ {
+  "segment_id": 22,
+  "km": 644.414,
+  "km_end": 14185.409,
+  "health_mean": 91.652,
+  "ltft_mean": 16.224,
+  "volt_mean": 14.1,
+  "coolant_mean": 95.967,
+  "windows": 2212
+ }
+]

@@ -1,5 +1,5 @@
 name: pvms_flutter_app
-description: "A new Flutter project."
+description: "PVMS - Predictive Vehicle Maintenance System (FYP, Riphah International University)"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -36,10 +36,12 @@ dependencies:
   cupertino_icons: ^1.0.8
 
   # PVMS Core Packages
-  flutter_blue_plus: ^1.31.14   # For connecting to the ELM327 OBD-II scanner
+  flutter_blue_plus: ^1.36.8    # ELM327 OBD-II scanner over Bluetooth LE (stay on 1.x)
   sqflite: ^2.3.0               # For local offline data storage (Historical Logs)
   path: ^1.9.0                  # Required for sqflite to find database directories
   http: ^1.2.0                  # For communicating with the FastAPI server
+  shared_preferences: ^2.3.0    # App settings (server URL, data source, vehicle id)
+  wakelock_plus: ^1.3.3         # Keep the screen on during a trip so Android does not pause BLE
 
 dev_dependencies:
   flutter_test:
@@ -63,10 +65,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/sim/opel_trip.csv       # real recorded trip replayed by the simulator
+    - assets/sim/opel_history.json   # per-segment history for the Time-To-Failure demo
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
