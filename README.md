@@ -72,16 +72,19 @@ The model advises; the driver and the mechanic decide.
 ```
 PVMS_Flutter_App/
 |-- .github/                  pull request template, issue forms, CI workflows
-|-- lib/                      Flutter app
-|   |-- main.dart             app shell: Dashboard, History, Settings
-|   |-- models/               TelemetrySample, PredictionResult (JSON contract with the API)
-|   |-- screens/              dashboard, history + trip detail, settings, scanner pairing
-|   |-- services/             MonitoringController, ApiService, DatabaseHelper, AppSettings
-|   |   `-- obd/              ELM327 BLE reader, PID decoding, simulator, fault scenarios
-|   `-- widgets/              shared UI: health gauge, finding cards, trend chart
-|-- test/                     Flutter unit and widget tests
-|-- assets/sim/               recorded Opel trip + per-segment history for the simulator demo
-|-- backend/
+|-- app/                      Flutter mobile app
+|   |-- lib/
+|   |   |-- main.dart         app shell: Dashboard, History, Settings
+|   |   |-- models/           TelemetrySample, PredictionResult (JSON contract with the API)
+|   |   |-- screens/          dashboard, history + trip detail, settings, scanner pairing
+|   |   |-- services/         MonitoringController, ApiService, DatabaseHelper, AppSettings
+|   |   |   `-- obd/          ELM327 BLE reader, PID decoding, simulator, fault scenarios
+|   |   `-- widgets/          shared UI: health gauge, finding cards, trend chart
+|   |-- test/                 Flutter unit and widget tests
+|   |-- assets/sim/           recorded Opel trip + per-segment history for the simulator demo
+|   |-- android/  ios/        platform projects (Android is the build target)
+|   `-- pubspec.yaml
+|-- backend/                  FastAPI server + ML
 |   |-- main.py               FastAPI app
 |   |-- train_model.py        training + full evaluation report
 |   |-- export_sim_trace.py   exports the simulator trip from the dataset
@@ -93,7 +96,7 @@ PVMS_Flutter_App/
 |   |-- run_server.bat        starts the server
 |   `-- (local only)          dataset.csv, saved_models/, recordings/, .venv/
 |-- docs/                     final report, user guide, API/model guide, deployment guide
-`-- android/ ios/ ...         Flutter platform folders
+`-- README.md
 ```
 
 ### API endpoints (`backend/main.py`)
@@ -146,9 +149,12 @@ If Windows Firewall asks, allow Python on **private** networks. Keep the server 
 ### 3. App
 
 ```powershell
+cd app
 flutter pub get
 flutter run
 ```
+
+Open the `app` folder (not the repository root) in Android Studio.
 
 In the app: **Settings -> Prediction server** -> `http://<laptop-IPv4>:8000` -> **Save & test**.
 
@@ -182,12 +188,13 @@ again (a hot restart cannot add plugins).
 ## Running the tests
 
 ```powershell
-# Flutter (repository root)
+# Flutter
+cd app
 flutter analyze        # must report "No issues found!"
 flutter test
 
 # Backend (needs the trained model: run setup_backend.bat or train_model.py first)
-cd backend
+cd ..\backend
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
