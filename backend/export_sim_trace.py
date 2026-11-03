@@ -1,7 +1,7 @@
 """Export one real trip (cold start → warm) from the Opel dataset for the app simulator and tests.
 
     python export_sim_trace.py
-writes  ../assets/sim/opel_trip.csv  and  tests/fixtures/opel_trip.csv
+writes  ../app/assets/sim/opel_trip.csv  and  tests/fixtures/opel_trip.csv
 """
 import os
 import sys
@@ -29,7 +29,7 @@ def main():
     out = g[["t_s"] + CORE_SIGNALS].copy()
     out["t_s"] = (out["t_s"] - out["t_s"].iloc[0]).round(3)
     out = out.round(3)
-    for path in (os.path.join(HERE, "..", "assets", "sim", "opel_trip.csv"),
+    for path in (os.path.join(HERE, "..", "app", "assets", "sim", "opel_trip.csv"),
                  os.path.join(HERE, "tests", "fixtures", "opel_trip.csv")):
         os.makedirs(os.path.dirname(path), exist_ok=True)
         out.to_csv(path, index=False)

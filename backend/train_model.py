@@ -170,7 +170,7 @@ def main():
     seg_tbl["lean_low_speed_rate"] = ((warm.trim_total_mean > 25) & (warm.speed_mean < 40)).groupby(warm.segment_id).mean()
     seg_tbl["health_mean"] = pd.Series([u_to_health(u) for u in u_all], index=warm.index).groupby(warm.segment_id).mean()
     seg_tbl["km"] = km_seg.reindex(seg_tbl.index)
-    hist_path = os.path.join(HERE, "..", "assets", "sim", "opel_history.json")
+    hist_path = os.path.join(HERE, "..", "app", "assets", "sim", "opel_history.json")
     if os.path.isdir(os.path.dirname(hist_path)):   # demo history for the app's Time-To-Failure card
         with open(hist_path, "w") as fh:
             json.dump(seg_tbl.reset_index()[["segment_id", "km", "km_end", "health_mean", "ltft_mean", "volt_mean",
